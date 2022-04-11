@@ -6,7 +6,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
         fontFamily: "NotoSansKR",
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
             headline1: TextStyle(
                 color: Colors.white,
                 fontSize: 70.0,
@@ -17,6 +17,6 @@ void main() {
                 color: Colors.white,
                 fontSize: 40.0,
                 fontWeight: FontWeight.bold))),
-    home: HomeScreen(),
+    home: const HomeScreen(),
   ));
 }

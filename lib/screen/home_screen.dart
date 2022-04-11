@@ -1,4 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
+
+import 'package:annieflutter/constant/color.dart';
+import 'package:annieflutter/screen/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,95 +12,119 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime selectedDate =
-      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  int maxNumber = 1000;
+  List<int> randomNumbers = [123, 456, 789];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.pink[100],
-        body: SafeArea(
-            bottom: false,
-            child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: Column(children: [
-                  _TopPart(
-                      selectedDate: selectedDate, onPressed: onHeartPressed),
-                  _BottomPart()
-                ]))));
+      backgroundColor: PRIMARY_COLOR,
+      body: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _Header(onPressed: onSettingsPop),
+                _Body(randomNumbers: randomNumbers),
+                _Footer(onPressed: onPressedCreateButton),
+              ],
+            ),
+          )),
+    );
   }
 
-  onHeartPressed() {
-    final today = DateTime.now();
-    showCupertinoDialog(
-        context: context,
-        barrierDismissible: true, // CupertinoDialog 바깥 눌렀을 때 닫힘.
-        builder: (BuildContext context) {
-          return Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-                color: Colors.white,
-                height: 300.0,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  initialDateTime: selectedDate,
-                  maximumDate: DateTime(today.year, today.month, today.day),
-                  onDateTimeChanged: (DateTime date) {
-                    setState(() {
-                      selectedDate = date;
-                    });
-                  },
-                )),
-          );
-        });
+  void onPressedCreateButton() {
+    final rand = Random();
+
+    final Set<int> newNumbers = {}; // 중복 리스트를 없애기 위해 List 대신 Set 사용
+
+    while (newNumbers.length != 3) {
+      // 3개의 숫자가 모두 나올 수 있도록, for 대신 while 루프 사용
+      final number = rand.nextInt(maxNumber); // 최대값: 1000
+
+      newNumbers.add(number);
+    }
+
+    setState(() {
+      randomNumbers = newNumbers.toList();
+    });
+  }
+
+  void onSettingsPop() async {
+    final result = await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      return SettingsScreen(maxNumber: maxNumber);
+    }));
+
+    if (result != null) {
+      setState(() {
+        maxNumber = result;
+      });
+    }
   }
 }
 
-class _TopPart extends StatelessWidget {
-  final DateTime selectedDate;
+class _Header extends StatelessWidget {
   final VoidCallback onPressed;
 
-  _TopPart({required this.selectedDate, required this.onPressed, Key? key})
-      : super(key: key);
+  const _Header({required this.onPressed, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final today = DateTime.now();
-
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text("U & I", style: theme.textTheme.headline1),
-          Column(
-            children: [
-              Text("Tommy랑 처음 만난 날", style: theme.textTheme.headline2),
-              Text(
-                  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
-                  style: theme.textTheme.bodyText1),
-            ],
-          ),
-          IconButton(
-            onPressed: onPressed,
-            icon: Icon(Icons.favorite),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "랜덤숫자 생성기",
+          style: TextStyle(color: Colors.white, fontSize: 20.0),
+        ),
+        IconButton(
+          onPressed: onPressed,
+          icon: Icon(
+            Icons.settings,
             color: Colors.red,
-            iconSize: 60.0,
           ),
-          Text(
-              'D+${DateTime(today.year, today.month, today.day).difference(selectedDate).inDays + 1}',
-              style: theme.textTheme.bodyText2),
-        ],
-      ),
+        )
+      ],
     );
   }
 }
 
-class _BottomPart extends StatelessWidget {
-  const _BottomPart({Key? key}) : super(key: key);
+class _Body extends StatelessWidget {
+  final List<int> randomNumbers;
+
+  const _Body({required this.randomNumbers, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: Image.asset('asset/img/tommy.jpeg'));
+    return Expanded(
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: randomNumbers
+              .map((x) =>
+                  Text(x.toString(), style: TextStyle(color: Colors.white)))
+              .toList()),
+    );
+  }
+}
+
+class _Footer extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _Footer({required this.onPressed, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.red),
+          onPressed: onPressed,
+          child: Text(
+            "생성하기",
+          ),
+        ));
   }
 }
