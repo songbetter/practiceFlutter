@@ -209,16 +209,21 @@ class _SliderButton extends StatelessWidget {
       bottom: 0,
       right: 0,
       left: 0,
-      child: Row(
-        children: [
-          renderPadLeftText(position: currentPosition),
-          Slider(
-              value: currentPosition.inSeconds.toDouble(),
-              onChanged: onSliderChanged,
-              max: maxPosition.inSeconds.toDouble(),
-              min: 0),
-          renderPadLeftText(position: maxPosition),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          children: [
+            renderPadLeftText(position: currentPosition),
+            Expanded(
+              child: Slider(
+                  value: currentPosition.inSeconds.toDouble(),
+                  onChanged: onSliderChanged,
+                  max: maxPosition.inSeconds.toDouble(),
+                  min: 0),
+            ),
+            renderPadLeftText(position: maxPosition),
+          ],
+        ),
       ),
     );
   }
