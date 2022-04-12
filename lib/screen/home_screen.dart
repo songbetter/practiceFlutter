@@ -27,10 +27,46 @@ class HomeScreen extends StatelessWidget {
         "icon": Icons.workspaces_filled,
         "title": "랜덤숫자"
       },
+      {
+        "color": Colors.lightGreen,
+        "route": PhotoAlbumMainScreen(),
+        "icon": Icons.play_circle_fill,
+        "title": "동영상"
+      },
+      {
+        "color": Colors.pinkAccent,
+        "route": DatePickerMainScreen(),
+        "icon": Icons.map,
+        "title": "지도"
+      },
+      {
+        "color": Colors.orange,
+        "route": RandomMainScreen(),
+        "icon": Icons.video_call,
+        "title": "영상통화"
+      },
+      {
+        "color": Colors.lightGreen,
+        "route": PhotoAlbumMainScreen(),
+        "icon": Icons.schedule,
+        "title": "스케쥴러"
+      },
+      {
+        "color": Colors.pinkAccent,
+        "route": DatePickerMainScreen(),
+        "icon": Icons.foggy,
+        "title": "미세먼지"
+      },
+      {
+        "color": Colors.orange,
+        "route": RandomMainScreen(),
+        "icon": Icons.settings,
+        "title": "설정"
+      },
     ];
     return Scaffold(
+        appBar: AppBar(title: Text("Annie App")),
         body: Container(
-            width: MediaQuery.of(context).size.width,
             child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -38,76 +74,53 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Padding(
                           padding: const EdgeInsets.only(bottom: 32.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: icons
-                                .asMap()
-                                .entries
-                                .map((icon) => Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: icon.value["color"]),
-                                              shape: BoxShape.circle),
-                                          child: IconButton(
-                                            onPressed: () {
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(builder:
-                                                      (BuildContext context) {
-                                                return icon.value["route"];
-                                              }));
-                                            },
-                                            icon: Icon(icon.value["icon"]),
-                                            color: icon.value["color"],
-                                            iconSize: 50.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          icon.value["title"],
-                                          style: TextStyle(
-                                              color: icon.value["color"],
-                                              fontSize: 20.0),
-                                        ),
-                                      ],
-                                    ))
-                                .toList(),
-                          )),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: icons
-                            .asMap()
-                            .entries
-                            .map((icon) => Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: icon.value["color"]),
-                                          shape: BoxShape.circle),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(builder:
-                                                  (BuildContext context) {
-                                            return icon.value["route"];
-                                          }));
-                                        },
-                                        icon: Icon(icon.value["icon"]),
-                                        color: icon.value["color"],
-                                        iconSize: 50.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      icon.value["title"],
-                                      style: TextStyle(
-                                          color: icon.value["color"],
-                                          fontSize: 20.0),
-                                    ),
-                                  ],
-                                ))
-                            .toList(),
-                      )
+                          child: _Row(rowList: icons.sublist(0, 3))),
+                      Padding(
+                          padding: const EdgeInsets.only(bottom: 32.0),
+                          child: _Row(rowList: icons.sublist(3, 6))),
+                      _Row(rowList: icons.sublist(6, 9))
                     ]))));
+  }
+}
+
+class _Row extends StatelessWidget {
+  final List<Map<String, dynamic>> rowList;
+
+  const _Row({required this.rowList, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: rowList
+          .asMap()
+          .entries
+          .map((icon) => Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: icon.value["color"]),
+                        shape: BoxShape.circle),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (BuildContext context) {
+                          return icon.value["route"];
+                        }));
+                      },
+                      icon: Icon(icon.value["icon"]),
+                      color: icon.value["color"],
+                      iconSize: 50.0,
+                    ),
+                  ),
+                  Text(
+                    icon.value["title"],
+                    style:
+                        TextStyle(color: icon.value["color"], fontSize: 20.0),
+                  ),
+                ],
+              ))
+          .toList(),
+    );
   }
 }
