@@ -1,4 +1,5 @@
 import 'package:annieflutter/screen/datePicker/datePicker_main_screen.dart';
+import 'package:annieflutter/screen/map/map_main_screen.dart';
 import 'package:annieflutter/screen/photoAlbum/photoAlbum_main_screen.dart';
 import 'package:annieflutter/screen/practice_screen.dart';
 import 'package:annieflutter/screen/random/random_main_screen.dart';
@@ -37,7 +38,7 @@ class HomeScreen extends StatelessWidget {
       },
       {
         "color": Colors.pinkAccent,
-        "route": DatePickerMainScreen(),
+        "route": MapMainScreen(),
         "icon": Icons.map,
         "title": "지도"
       },
