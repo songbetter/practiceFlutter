@@ -1,36 +1,78 @@
-import 'package:annieflutter/layout/main_layout.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class PracticeScreen extends StatelessWidget {
+class PracticeScreen extends StatefulWidget {
   const PracticeScreen({Key? key}) : super(key: key);
 
   @override
+  State<PracticeScreen> createState() => _PracticeScreenState();
+}
+
+class _PracticeScreenState extends State<PracticeScreen> {
+  @override
   Widget build(BuildContext context) {
-    return MainLayout(title: "Annie App", children: [
-      ElevatedButton(
-        onPressed: () {},
-        child: Text("ElevatedButton"),
-        style: ElevatedButton.styleFrom(
-            primary: Colors.pinkAccent,
-            onPrimary: Colors.black,
-            shadowColor: Colors.green,
-            elevation: 30.0,
-            padding: EdgeInsets.all(16.0),
-            side: BorderSide(color: Colors.black, width: 4.0)),
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: StreamBuilder(
+        // 기존의 데이터를 캐싱.
+        stream: streamNumbers(),
+        builder: (context, snapshot) => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              "StreamBuilder",
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20.0,
+                  color: Colors.black),
+            ),
+            Text(
+              "State: ${snapshot.connectionState}",
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20.0,
+                  color: Colors.black),
+            ),
+            Text(
+              "Data: ${snapshot.data}",
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20.0,
+                  color: Colors.black),
+            ),
+            Text(
+              "Error: ${snapshot.error}",
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20.0,
+                  color: Colors.black),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                child: Text("setState"))
+          ],
+        ),
       ),
-      OutlinedButton(
-        onPressed: () {},
-        child: Text("OutlinedButton"),
-        style: OutlinedButton.styleFrom(
-            primary: Colors.green,
-            backgroundColor: Colors.yellow,
-            elevation: 10.0),
-      ),
-      TextButton(
-        onPressed: () {},
-        child: Text("TextButton"),
-        style: TextButton.styleFrom(primary: Colors.blue),
-      )
-    ]);
+    ));
+  }
+
+  Future<int> getNumber() async {
+    await Future.delayed(Duration(seconds: 3));
+    final random = Random();
+
+    // throw Exception("에러가 발생했습니다.");
+    return random.nextInt(100);
+  }
+
+  Stream<int> streamNumbers() async* {
+    for (int i = 0; i < 10; i++) {
+      await Future.delayed(Duration(seconds: 1));
+      yield i;
+    }
   }
 }
