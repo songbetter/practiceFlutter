@@ -54,7 +54,7 @@ class _MapMainScreenState extends State<MapMainScreen> {
                   child: CircularProgressIndicator(),
                 );
               }
-              if (snapshot.data == "위치 권한이 허가 되었습니다.") {
+              if (snapshot.data == "위치 권한이 허가되었습니다.") {
                 return StreamBuilder<Position>(
                     stream:
                         Geolocator.getPositionStream(), // position이 바뀔때마다 실행
@@ -144,7 +144,7 @@ class _MapMainScreenState extends State<MapMainScreen> {
   Future<String> checkPermission() async {
     final isLocationEnabled = await Geolocator.isLocationServiceEnabled();
 
-    if (isLocationEnabled) {
+    if (!isLocationEnabled) {
       return "위치 서비스를 활성화 해주세요.";
     }
 
