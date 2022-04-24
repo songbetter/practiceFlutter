@@ -1,4 +1,8 @@
 PODS:
+  - agora_rtc_engine (5.1.0):
+    - AgoraIrisRTC_iOS (~> 3.6.2)
+    - Flutter
+  - AgoraIrisRTC_iOS (3.6.2)
   - Flutter (1.0.0)
   - geolocator_apple (1.2.0):
     - Flutter
@@ -12,24 +16,31 @@ PODS:
     - GoogleMaps/Base
   - image_picker_ios (0.0.1):
     - Flutter
+  - permission_handler_apple (9.0.4):
+    - Flutter
   - video_player_avfoundation (0.0.1):
     - Flutter
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - Flutter (from `Flutter`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
 SPEC REPOS:
   trunk:
+    - AgoraIrisRTC_iOS
     - GoogleMaps
 
 EXTERNAL SOURCES:
+  agora_rtc_engine:
+    :path: ".symlinks/plugins/agora_rtc_engine/ios"
   Flutter:
     :path: Flutter
   geolocator_apple:
@@ -38,20 +49,25 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_maps_flutter/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   video_player_avfoundation:
     :path: ".symlinks/plugins/video_player_avfoundation/ios"
   webview_flutter_wkwebview:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  agora_rtc_engine: fb0e823adb228eda4433fabed56d72d64ff87771
+  AgoraIrisRTC_iOS: c789bb65875b54d2b6b02dc278850dc70515b226
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
   google_maps_flutter: c59fc576c0d0c7f4dc4bd63832c862d22d5a7c6d
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
-PODFILE CHECKSUM: 22a0e45a2f2707e0de072bc68119c49d30204a38
+PODFILE CHECKSUM: 7df6e0d92ddef05644ae65aac4a7f769b0f0e11e
 
 COCOAPODS: 1.11.3

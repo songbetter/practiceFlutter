@@ -3,6 +3,7 @@ import 'package:annieflutter/screen/map/map_main_screen.dart';
 import 'package:annieflutter/screen/photoAlbum/photoAlbum_main_screen.dart';
 import 'package:annieflutter/screen/practice_screen.dart';
 import 'package:annieflutter/screen/random/random_main_screen.dart';
+import 'package:annieflutter/screen/videoCall/videoCall_main_screen.dart';
 import 'package:annieflutter/screen/vidoePlayer/videoPlayer_main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,7 @@ class HomeScreen extends StatelessWidget {
       },
       {
         "color": Colors.orange,
-        "route": RandomMainScreen(),
+        "route": VideoCallMainScreen(),
         "icon": Icons.video_call,
         "title": "영상통화"
       },
