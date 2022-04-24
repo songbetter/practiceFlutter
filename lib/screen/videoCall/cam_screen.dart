@@ -20,7 +20,19 @@ class _CamScreenState extends State<CamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("LIVE")),
+        appBar: AppBar(
+          title: Text("LIVE"),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                engine?.switchCamera();
+              },
+              icon: Icon(Icons.switch_camera_outlined),
+              iconSize: 30.0,
+            )
+          ],
+        ),
         body: FutureBuilder(
             future: init(),
             builder: (context, snapshot) {
@@ -68,7 +80,10 @@ class _CamScreenState extends State<CamScreen> {
   Widget renderSubView() {
     if (otherUid == null) {
       return Center(
-        child: Text("대화 상대가 없습니다."),
+        child: Text(
+          "대화 상대가 없습니다.",
+          style: TextStyle(fontSize: 20.0),
+        ),
       );
     } else {
       return RtcRemoteView.SurfaceView(
