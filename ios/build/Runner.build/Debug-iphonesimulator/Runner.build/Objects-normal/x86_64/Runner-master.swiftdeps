@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "774a0a05fd0ef828293e909e121a76c2612242962865123c2ddcd232e965cdbe"
+build_start_time: [1650808309, 652233123]
+build_end_time: [1650808311, 702736854]
+inputs:
+  "/Users/annie/StudioProjects/annieflutter/ios/Runner/AppDelegate.swift": [1649918946, 140343666]

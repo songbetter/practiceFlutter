@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/annie/StudioProjects/annieflutter/ios/Runner/GeneratedPluginRegistrant.m \
+  /Users/annie/StudioProjects/annieflutter/ios/Runner/GeneratedPluginRegistrant.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Modules/module.modulemap \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngineGroup.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngine.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterDartProject.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCallbackCache.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterTexture.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlatformViews.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCodecs.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterChannels.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlugin.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterMacros.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterAppDelegate.h \
+  /Users/annie/StudioProjects/annieflutter/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/Flutter.h
