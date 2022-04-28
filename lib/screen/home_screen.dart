@@ -1,8 +1,8 @@
 import 'package:annieflutter/screen/datePicker/datePicker_main_screen.dart';
 import 'package:annieflutter/screen/map/map_main_screen.dart';
 import 'package:annieflutter/screen/photoAlbum/photoAlbum_main_screen.dart';
-import 'package:annieflutter/screen/practice_screen.dart';
 import 'package:annieflutter/screen/random/random_main_screen.dart';
+import 'package:annieflutter/screen/timetravel/timeTravel_main_screen.dart';
 import 'package:annieflutter/screen/videoCall/videoCall_main_screen.dart';
 import 'package:annieflutter/screen/vidoePlayer/videoPlayer_main_screen.dart';
 import 'package:flutter/material.dart';
@@ -63,9 +63,9 @@ class HomeScreen extends StatelessWidget {
       },
       {
         "color": Colors.orange,
-        "route": PracticeScreen(),
-        "icon": Icons.settings,
-        "title": "설정"
+        "route": TimeTravelMainScreen(),
+        "icon": Icons.timelapse_outlined,
+        "title": "타임머신"
       },
     ];
     return Scaffold(
